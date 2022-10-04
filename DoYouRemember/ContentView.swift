@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        List {
+            TestView(phoneNumberIsLinked: false)
+                .listRowInsets(EdgeInsets())
+            TestView(phoneNumberIsLinked: true)
+                .listRowInsets(EdgeInsets())
         }
-        .padding()
+        .listStyle(.grouped)
     }
 }
 
