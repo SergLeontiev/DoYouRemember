@@ -9,13 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        List {
-            TestView(phoneNumberIsLinked: false)
-                .listRowInsets(EdgeInsets())
-            TestView(phoneNumberIsLinked: true)
-                .listRowInsets(EdgeInsets())
-        }
-        .listStyle(.grouped)
+        AddWordView(viewModel: AddWordViewModel())
     }
 }
 
