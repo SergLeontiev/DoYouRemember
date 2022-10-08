@@ -19,6 +19,7 @@
 		CACA86F428EF624E00851816 /* AddWordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA86F328EF624E00851816 /* AddWordViewModel.swift */; };
 		CACA86F628EF664C00851816 /* WordDefinitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA86F528EF664C00851816 /* WordDefinitionViewModel.swift */; };
 		CACA86F828EF6DF000851816 /* WordDefinitionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA86F728EF6DF000851816 /* WordDefinitionRow.swift */; };
+		CADC61DD28F177800038E932 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADC61DC28F177800038E932 /* LoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		CACA86F328EF624E00851816 /* AddWordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordViewModel.swift; sourceTree = "<group>"; };
 		CACA86F528EF664C00851816 /* WordDefinitionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDefinitionViewModel.swift; sourceTree = "<group>"; };
 		CACA86F728EF6DF000851816 /* WordDefinitionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDefinitionRow.swift; sourceTree = "<group>"; };
+		CADC61DC28F177800038E932 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				CA9240C128E834DF004A8F7F /* ContentView.swift */,
 				CA2FA42728E835A3005D5579 /* TestView.swift */,
 				CACA86EF28EF616200851816 /* AddWord */,
+				CADC61D928F177630038E932 /* Views */,
 				CACA86E728EF5B0700851816 /* Network */,
 				CA9240C528E834E0004A8F7F /* Preview Content */,
 			);
@@ -121,6 +124,14 @@
 				CACA86F728EF6DF000851816 /* WordDefinitionRow.swift */,
 			);
 			path = Row;
+			sourceTree = "<group>";
+		};
+		CADC61D928F177630038E932 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CADC61DC28F177800038E932 /* LoadingView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA2FA42828E835A3005D5579 /* TestView.swift in Sources */,
+				CADC61DD28F177800038E932 /* LoadingView.swift in Sources */,
 				CACA86F828EF6DF000851816 /* WordDefinitionRow.swift in Sources */,
 				CA9240C228E834DF004A8F7F /* ContentView.swift in Sources */,
 				CACA86F628EF664C00851816 /* WordDefinitionViewModel.swift in Sources */,
