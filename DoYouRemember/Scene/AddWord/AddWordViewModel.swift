@@ -14,7 +14,7 @@ class AddWordViewModel: ObservableObject {
     private var disposables = Set<AnyCancellable>()
     
     @Published var word: String = ""
-    @Published var dataSource: [WordDefinitionViewModel] = []
+    @Published private(set) var state = LoadingState<[WordDefinitionViewModel]>.idle
     
     init(networkClient: NetworkClientLogic = NetworkClient()) {
         self.networkClient = networkClient
@@ -24,15 +24,16 @@ class AddWordViewModel: ObservableObject {
 private extension AddWordViewModel {
     func bind() {
         $word
-          .dropFirst(1)
-          .filter { !$0.isEmpty }
-          .debounce(for: .seconds(0.5), scheduler: DispatchQueue(label: "AddWordViewModel"))
-          .sink(receiveValue: fetchDefinitions(forWord:))
-          .store(in: &disposables)
+            .dropFirst(1)
+            .debounce(for: .seconds(0.7), scheduler: DispatchQueue.main)
+            .sink(receiveValue: fetchDefinitions(forWord:))
+            .store(in: &disposables)
     }
     
     func fetchDefinitions(forWord word: String) {
-        networkClient.getDictionaryItem(text: word)
+        state = .loading
+
+        networkClient.request(type: [DictionaryItem].self, endpoint: .getWordDefinitions(word: word))
             .map { response in
                 response
                     .flatMap { $0.meanings}
@@ -40,14 +41,13 @@ private extension AddWordViewModel {
                     .map(WordDefinitionViewModel.init)
             }
             .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { [weak self] value in
-                    if case .failure = value {
-                        self?.dataSource = []
-                    }
-                }, receiveValue: { [weak self] viewModels in
-                    self?.dataSource = viewModels
-                })
-            .store(in: &disposables)
+            .convertToLoadingState()
+            .assign(to: &$state)
+    }
+}
+
+struct Previews_AddWordViewModel_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

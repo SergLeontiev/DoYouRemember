@@ -15,10 +15,13 @@ struct WordDefinitionRow: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(viewModel.definition.definition)
-                .bold()
-            Text(viewModel.definition.example ?? "No example")
+        HStack {
+            VStack(alignment: .leading) {
+                Text(viewModel.definition.definition)
+                    .bold()
+                Text(viewModel.definition.example ?? "No example")
+            }
+            Spacer()
         }
     }
 }

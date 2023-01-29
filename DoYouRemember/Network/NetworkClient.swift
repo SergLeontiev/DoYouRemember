@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 protocol NetworkClientLogic: AnyObject {
-    func getDictionaryItem(text: String) -> AnyPublisher<[DictionaryItem], NetworkError>
+    func request<T>(type: T.Type, endpoint: Endpoint) -> AnyPublisher<T, NetworkError> where T: Decodable
 }
 
 final class NetworkClient {
@@ -22,10 +22,8 @@ final class NetworkClient {
 
 // MARK: NetworkClientLogic
 extension NetworkClient: NetworkClientLogic {
-    func getDictionaryItem(text: String) -> AnyPublisher<[DictionaryItem], NetworkError> {
-        let path = "https://api.dictionaryapi.dev/api/v2/entries/en/\(text)"
-            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        guard let path = path, let url = URL(string: path) else {
+    func request<T: Decodable>(type: T.Type, endpoint: Endpoint) -> AnyPublisher<T, NetworkError> {
+        guard let path = endpoint.path, let url = URL(string: path) else {
             let error = NetworkError.network(description: "Couldn't create URL")
             return Fail(error: error).eraseToAnyPublisher()
         }
@@ -41,7 +39,7 @@ extension NetworkClient: NetworkClientLogic {
     }
 }
 
-// MARK: Private Methods
+// MARK: - Private Methods
 private extension NetworkClient {
     func decode<T: Decodable>(_ data: Data) -> AnyPublisher<T, NetworkError> {
         let decoder = JSONDecoder()
@@ -49,7 +47,7 @@ private extension NetworkClient {
         return Just(data)
             .decode(type: T.self, decoder: decoder)
             .mapError { error in
-                .parsing(description: error.localizedDescription)
+                    .parsing(description: error.localizedDescription)
             }
             .eraseToAnyPublisher()
     }

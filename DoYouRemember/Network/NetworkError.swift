@@ -7,7 +7,14 @@
 
 import Foundation
 
-enum NetworkError: Error {
-  case parsing(description: String)
-  case network(description: String)
+enum NetworkError: LocalizedError {
+    case parsing(description: String)
+    case network(description: String)
+    
+    var errorDescription: String? {
+        switch self {
+        case let .network(description), let .parsing(description):
+            return description
+        }
+    }
 }

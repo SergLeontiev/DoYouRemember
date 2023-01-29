@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA2FA42828E835A3005D5579 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2FA42728E835A3005D5579 /* TestView.swift */; };
 		CA9240C028E834DF004A8F7F /* DoYouRememberApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9240BF28E834DF004A8F7F /* DoYouRememberApp.swift */; };
 		CA9240C228E834DF004A8F7F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9240C128E834DF004A8F7F /* ContentView.swift */; };
 		CA9240C428E834E0004A8F7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA9240C328E834E0004A8F7F /* Assets.xcassets */; };
@@ -20,10 +19,13 @@
 		CACA86F628EF664C00851816 /* WordDefinitionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA86F528EF664C00851816 /* WordDefinitionViewModel.swift */; };
 		CACA86F828EF6DF000851816 /* WordDefinitionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA86F728EF6DF000851816 /* WordDefinitionRow.swift */; };
 		CADC61DD28F177800038E932 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CADC61DC28F177800038E932 /* LoadingView.swift */; };
+		CAFA8C4529853C5B00F5D3DC /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA8C4429853C5B00F5D3DC /* Endpoint.swift */; };
+		CAFA8C4A29854FBD00F5D3DC /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA8C4929854FBD00F5D3DC /* LoadingState.swift */; };
+		CAFA8C4D2985503D00F5D3DC /* PublisherExstension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA8C4C2985503D00F5D3DC /* PublisherExstension.swift */; };
+		CAFA8C512985549800F5D3DC /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFA8C502985549800F5D3DC /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CA2FA42728E835A3005D5579 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		CA9240BC28E834DF004A8F7F /* DoYouRemember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoYouRemember.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA9240BF28E834DF004A8F7F /* DoYouRememberApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoYouRememberApp.swift; sourceTree = "<group>"; };
 		CA9240C128E834DF004A8F7F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,6 +39,10 @@
 		CACA86F528EF664C00851816 /* WordDefinitionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDefinitionViewModel.swift; sourceTree = "<group>"; };
 		CACA86F728EF6DF000851816 /* WordDefinitionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDefinitionRow.swift; sourceTree = "<group>"; };
 		CADC61DC28F177800038E932 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CAFA8C4429853C5B00F5D3DC /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		CAFA8C4929854FBD00F5D3DC /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		CAFA8C4C2985503D00F5D3DC /* PublisherExstension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublisherExstension.swift; sourceTree = "<group>"; };
+		CAFA8C502985549800F5D3DC /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +77,11 @@
 			children = (
 				CA9240BF28E834DF004A8F7F /* DoYouRememberApp.swift */,
 				CA9240C128E834DF004A8F7F /* ContentView.swift */,
-				CA2FA42728E835A3005D5579 /* TestView.swift */,
-				CACA86EF28EF616200851816 /* AddWord */,
-				CADC61D928F177630038E932 /* Views */,
+				CA9240C328E834E0004A8F7F /* Assets.xcassets */,
+				CAFA8C4829854F2400F5D3DC /* Scene */,
 				CACA86E728EF5B0700851816 /* Network */,
+				CAFA8C4729854F1D00F5D3DC /* Helper */,
+				CADC61D928F177630038E932 /* View */,
 				CA9240C528E834E0004A8F7F /* Preview Content */,
 			);
 			path = DoYouRemember;
@@ -91,20 +98,20 @@
 		CACA86E728EF5B0700851816 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				CACA86EA28EF5CFB00851816 /* Models */,
+				CACA86EA28EF5CFB00851816 /* Model */,
+				CAFA8C4429853C5B00F5D3DC /* Endpoint.swift */,
 				CACA86E828EF5B1900851816 /* NetworkClient.swift */,
 				CACA86ED28EF5EA200851816 /* NetworkError.swift */,
-				CA9240C328E834E0004A8F7F /* Assets.xcassets */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		CACA86EA28EF5CFB00851816 /* Models */ = {
+		CACA86EA28EF5CFB00851816 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				CACA86EB28EF5D1800851816 /* DictionaryItem.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CACA86EF28EF616200851816 /* AddWord */ = {
@@ -126,12 +133,38 @@
 			path = Row;
 			sourceTree = "<group>";
 		};
-		CADC61D928F177630038E932 /* Views */ = {
+		CADC61D928F177630038E932 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				CADC61DC28F177800038E932 /* LoadingView.swift */,
+				CAFA8C502985549800F5D3DC /* ErrorView.swift */,
 			);
-			path = Views;
+			path = View;
+			sourceTree = "<group>";
+		};
+		CAFA8C4729854F1D00F5D3DC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CAFA8C4B2985501E00F5D3DC /* Exstension */,
+				CAFA8C4929854FBD00F5D3DC /* LoadingState.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		CAFA8C4829854F2400F5D3DC /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				CACA86EF28EF616200851816 /* AddWord */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		CAFA8C4B2985501E00F5D3DC /* Exstension */ = {
+			isa = PBXGroup;
+			children = (
+				CAFA8C4C2985503D00F5D3DC /* PublisherExstension.swift */,
+			);
+			path = Exstension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,16 +237,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA2FA42828E835A3005D5579 /* TestView.swift in Sources */,
+				CAFA8C4A29854FBD00F5D3DC /* LoadingState.swift in Sources */,
 				CADC61DD28F177800038E932 /* LoadingView.swift in Sources */,
 				CACA86F828EF6DF000851816 /* WordDefinitionRow.swift in Sources */,
 				CA9240C228E834DF004A8F7F /* ContentView.swift in Sources */,
 				CACA86F628EF664C00851816 /* WordDefinitionViewModel.swift in Sources */,
 				CACA86F428EF624E00851816 /* AddWordViewModel.swift in Sources */,
+				CAFA8C4D2985503D00F5D3DC /* PublisherExstension.swift in Sources */,
 				CA9240C028E834DF004A8F7F /* DoYouRememberApp.swift in Sources */,
 				CACA86EE28EF5EA200851816 /* NetworkError.swift in Sources */,
 				CACA86EC28EF5D1800851816 /* DictionaryItem.swift in Sources */,
 				CACA86F128EF623A00851816 /* AddWordView.swift in Sources */,
+				CAFA8C512985549800F5D3DC /* ErrorView.swift in Sources */,
+				CAFA8C4529853C5B00F5D3DC /* Endpoint.swift in Sources */,
 				CACA86E928EF5B1900851816 /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

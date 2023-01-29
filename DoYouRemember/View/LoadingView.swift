@@ -11,13 +11,6 @@ struct LoadingView: View {
     @State private var isLoading = false
     private let heights: [CGFloat] = [8, 5, 14, 31, 13, 32, 9]
     
-    private func getLoadingAnimation(index: Int) -> Animation {
-        Animation.default
-            .repeatForever(autoreverses: false)
-            .speed(0.4)
-            .delay(0.07 * Double(index))
-    }
-    
     var body: some View {
         VStack(alignment: .center, spacing: 19) {
             
@@ -38,6 +31,16 @@ struct LoadingView: View {
         .onAppear() {
             isLoading.toggle()
         }
+    }
+}
+
+// MARK: - Private Methods
+private extension LoadingView {
+    func getLoadingAnimation(index: Int) -> Animation {
+        Animation.default
+            .repeatForever(autoreverses: false)
+            .speed(0.4)
+            .delay(0.07 * Double(index))
     }
 }
 
