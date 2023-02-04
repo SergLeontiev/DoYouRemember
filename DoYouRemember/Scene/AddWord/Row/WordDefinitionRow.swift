@@ -16,13 +16,17 @@ struct WordDefinitionRow: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 8) {
                 Text(viewModel.definition.definition)
-                    .bold()
+                    .font(.system(size: 17, weight: .regular))
                 Text(viewModel.definition.example ?? "No example")
+                    .font(.system(size: 14, weight: .light))
+                    .foregroundColor(.gray)
             }
             Spacer()
         }
+        .padding(.horizontal, 18)
+        .padding(.vertical, 10)
     }
 }
 

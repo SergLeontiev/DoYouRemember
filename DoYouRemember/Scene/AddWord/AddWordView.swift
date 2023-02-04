@@ -15,21 +15,42 @@ struct AddWordView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                TextField("e.g. Amaze", text: $viewModel.word)
-                
-                switch viewModel.state {
-                case .idle:
-                    EmptyView()
-                case .loading:
-                    LoadingView()
-                case let .failed(error):
-                    ErrorView(error: error)
-                case let .loaded(wordDefinions):
-                    ForEach(wordDefinions, content: WordDefinitionRow.init(viewModel:))
+        VStack(spacing: 36) {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Word or phrase")
+                    .font(.system(size: 14, weight: .light))
+                    .foregroundColor(.gray)
+                TextField("e.g. take after", text: $viewModel.word)
+                    .padding(12)
+                    .frame(height: 46)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color(UIColor(red: 0.971, green: 0.971, blue: 0.971, alpha: 1)))
+                    )
+                    
+            }
+            .padding(.top, 25)
+            .padding(.horizontal, 18)
+            
+            switch viewModel.state {
+            case .idle:
+                Spacer()
+            case .loading:
+                Spacer()
+                LoadingView()
+                Spacer()
+            case let .failed(error):
+                Spacer()
+                ErrorView(error: error)
+                Spacer()
+            case let .loaded(wordDefinions):
+                ScrollView {
+                    ForEach(wordDefinions) {
+                        WordDefinitionRow(viewModel: $0)
+                        Divider()
+                    }
                 }
-            }.padding(20)
+            }
         }
     }
 }
