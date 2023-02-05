@@ -33,16 +33,28 @@ private extension AddWordViewModel {
     func fetchDefinitions(forWord word: String) {
         state = .loading
 
-        networkClient.request(type: [DictionaryItem].self, endpoint: .getWordDefinitions(word: word))
-            .map { response in
-                response
-                    .flatMap { $0.meanings}
-                    .flatMap { $0.definitions }
-                    .map(WordDefinitionViewModel.init)
+        networkClient.request(type: [DictionaryItem].self,
+                              endpoint: .getWordDefinitions(word: word))
+        .catch { error -> AnyPublisher<[DictionaryItem], NetworkError> in
+            switch error as NetworkError {
+            case .parsing:
+                return Just([])
+                    .setFailureType(to: NetworkError.self)
+                    .eraseToAnyPublisher()
+            default:
+                return Fail(error: error)
+                    .eraseToAnyPublisher()
             }
-            .receive(on: DispatchQueue.main)
-            .convertToLoadingState()
-            .assign(to: &$state)
+        }
+        .compactMap { response in
+            response
+                .flatMap { $0.meanings}
+                .flatMap { $0.definitions }
+                .map(WordDefinitionViewModel.init)
+        }
+        .receive(on: DispatchQueue.main)
+        .convertToLoadingState()
+        .assign(to: &$state)
     }
 }
 
