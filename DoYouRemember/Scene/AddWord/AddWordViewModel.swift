@@ -21,6 +21,7 @@ class AddWordViewModel: ObservableObject {
         bind()
     }
 }
+
 private extension AddWordViewModel {
     func bind() {
         $word
@@ -31,6 +32,11 @@ private extension AddWordViewModel {
     }
     
     func fetchDefinitions(forWord word: String) {
+        guard !word.isEmpty else {
+            state = .idle
+            return
+        }
+        
         state = .loading
 
         networkClient.request(type: [DictionaryItem].self,
